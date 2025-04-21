@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>FOOBS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Start Screen -->
+      <div id="start-screen" class="screen">
+        <div class="start-content">
+          <h1>FOOBS</h1>
+          <p>It may mean Flexible Overlay Operator Bullsh*t on good days.</p>
+          <div class="button-container">
+            <button id="start-button" class="large-button">START</button>
+            <button id="exit-button" class="large-button">EXIT</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Screen -->
+      <div id="main-screen" class="screen hidden">
+        <div class="header">
+          <button id="add-target-button" class="add-button">+</button>
+        </div>
+        <div id="targets-container" class="targets-container">
+          <!-- Targets will be added here dynamically -->
+        </div>
+      </div>
+
+      <!-- Add Target Modal -->
+      <div id="add-target-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Add New Target</h2>
+          <form id="add-target-form">
+            <div class="form-group">
+              <label>1. Target</label>
+              <div class="file-input-container">
+                <input type="text" id="target-path" readonly />
+                <button type="button" id="choose-file-button">
+                  Choose location
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>2. Display Name</label>
+              <input type="text" id="display-name" required />
+            </div>
+            <div class="form-group">
+              <label>3. Type</label>
+              <select id="target-type">
+                <option value="integer">Integer</option>
+                <option value="string">String</option>
+              </select>
+            </div>
+            <div class="modal-buttons">
+              <button type="button" id="cancel-button">Cancel</button>
+              <button type="submit" id="save-button">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Edit Target Modal -->
+      <div id="edit-target-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Edit Target</h2>
+          <form id="edit-target-form">
+            <input type="hidden" id="edit-target-index" />
+            <div class="form-group">
+              <label>1. Target</label>
+              <div class="file-input-container">
+                <input type="text" id="edit-target-path" readonly />
+                <button type="button" id="edit-choose-file-button">
+                  Choose location
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>2. Display Name</label>
+              <input type="text" id="edit-display-name" required />
+            </div>
+            <div class="form-group">
+              <label>3. Type</label>
+              <select id="edit-target-type">
+                <option value="integer">Integer</option>
+                <option value="string">String</option>
+              </select>
+            </div>
+            <div class="modal-buttons">
+              <button type="button" id="edit-cancel-button">Cancel</button>
+              <button type="submit" id="edit-save-button">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- String Update Modal -->
+      <div id="string-update-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Update String Value</h2>
+          <form id="string-update-form">
+            <input type="hidden" id="string-target-index" />
+            <div class="form-group">
+              <label>New Value</label>
+              <input type="text" id="string-value" required />
+            </div>
+            <div class="modal-buttons">
+              <button type="button" id="string-cancel-button">Cancel</button>
+              <button type="submit" id="string-save-button">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

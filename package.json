@@ -1,0 +1,27 @@
+{
+  "name": "foobs",
+  "version": "0.1.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.foobs.app",
+    "productName": "FOOBS",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
