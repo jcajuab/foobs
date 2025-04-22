@@ -1,25 +1,22 @@
-import { app, BrowserWindow, ipcMain, dialog } from "electron";
-import path from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const path = require("path");
+const fs = require("fs");
 
 // Store for target files
 let targets = [];
 
 function createWindow() {
-  // Create the browser window with fixed dimensions
+  // Create the browser window with dimensions that can now be resized
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
     backgroundColor: "#202225", // OBS-like dark background
+    minWidth: 600, // Set minimum dimensions for usability
+    minHeight: 400,
   });
 
   // Load the index.html file
@@ -70,6 +67,17 @@ ipcMain.handle("write-file", async (event, filePath, content) => {
     return true;
   } catch (error) {
     console.error("Error writing file:", error);
+    return false;
+  }
+});
+
+// Handler for deleting files
+ipcMain.handle("delete-file", async (event, filePath) => {
+  try {
+    fs.unlinkSync(filePath);
+    return true;
+  } catch (error) {
+    console.error("Error deleting file:", error);
     return false;
   }
 });

@@ -22,7 +22,10 @@
       <!-- Main Screen -->
       <div id="main-screen" class="screen hidden">
         <div class="header">
-          <button id="add-target-button" class="add-button">+</button>
+          <button id="add-target-button" class="add-button">
+            <span class="plus-icon">+</span>
+            <span class="button-text">Add New Target</span>
+          </button>
         </div>
         <div id="targets-container" class="targets-container">
           <!-- Targets will be added here dynamically -->
@@ -96,21 +99,32 @@
         </div>
       </div>
 
-      <!-- String Update Modal -->
-      <div id="string-update-modal" class="modal hidden">
+      <!-- Delete Confirmation Modal -->
+      <div id="delete-modal" class="modal hidden">
         <div class="modal-content">
-          <h2>Update String Value</h2>
-          <form id="string-update-form">
-            <input type="hidden" id="string-target-index" />
-            <div class="form-group">
-              <label>New Value</label>
-              <input type="text" id="string-value" required />
-            </div>
-            <div class="modal-buttons">
-              <button type="button" id="string-cancel-button">Cancel</button>
-              <button type="submit" id="string-save-button">Update</button>
-            </div>
-          </form>
+          <h2>Delete Target</h2>
+          <p>How would you like to delete this target?</p>
+          <input type="hidden" id="delete-target-index" />
+          <div class="delete-options">
+            <button id="delete-from-foobs" class="delete-option">
+              Remove from FOOBS only
+              <span class="option-description"
+                >The target file will remain on your system</span
+              >
+            </button>
+            <button
+              id="delete-file-too"
+              class="delete-option delete-option-danger"
+            >
+              Delete target file as well
+              <span class="option-description"
+                >This will permanently delete the file from your system</span
+              >
+            </button>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" id="delete-cancel-button">Cancel</button>
+          </div>
         </div>
       </div>
     </div>
